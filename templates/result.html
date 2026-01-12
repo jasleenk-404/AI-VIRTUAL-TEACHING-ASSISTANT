@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .score {
+            font-size: 22px;
+            margin: 15px 0;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 10px 15px;
+            background: #11998e;
+            color: white;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="result-box">
+    <h2>🎉 Quiz Completed!</h2>
+     <div class="score">
+        You scored {{ score }} out of 5
+    </div>
+
+    <div class="feedback">
+        {% if score == total %}
+            🎉 <strong>Excellent!</strong> Perfect score!
+        {% elif score >= 4 %}
+            👏 <strong>Very Good!</strong> You have strong understanding.
+        {% elif score >= 3 %}
+            🙂 <strong>Good Effort!</strong> Keep practicing.
+        {% elif score > 0 %}
+            ⚠️ <strong>Needs Improvement.</strong> Revise the basics.
+        {% else %}
+            ❌ <strong>No correct answers.</strong> Try again!
+        {% endif %}
+    </div>
+
+    <a href="/">Go to Home</a>
+</div>
+</body>
+</html>

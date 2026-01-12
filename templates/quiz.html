@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz - AI Teaching Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            padding: 40px;
+        }
+
+        .quiz-box {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f4f6fb;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 6px 0;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #43cea2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button:hover {
+            background: #36b38c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-box">
+    <h2>📝 AI Quiz</h2>
+
+    <form method="POST">
+        {% for qid, q in questions.items() %}
+        <div class="question">
+            <strong>{{ q.question }}</strong>
+            {% for opt in q.options %}
+            <label>
+                <input type="radio" name="{{ qid }}" value="{{ opt }}" required>
+                {{ opt }}
+            </label>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <button type="submit">Submit Quiz</button>
+    </form>
+</div>
+
+</body>
+</html>
